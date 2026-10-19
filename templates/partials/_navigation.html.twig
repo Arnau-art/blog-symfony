@@ -19,6 +19,27 @@
                 <li class="lien"><a href="{{ path('about') }}"><i class="fa fa-bookmark sr-icons"></i> About</a></li>
                 <li class="lien"><a href="{{ path('blog') }}"><i class="fa fa-file-text sr-icons"></i> Blog</a></li>
                 <li class="lien"><a href="{{ path('contact') }}"><i class="fa fa-phone-square sr-icons"></i> Contact</a>
+                    {% if app.user %}
+                <li class="lien">
+                    <a href="{{ path('app_logout') }}">
+                        <i class="fa fa-sign-out sr-icons"></i>
+                        Logout
+                    </a>
+                </li>
+                {% else %}
+                <li class="lien">
+                    <a href="{{ path('app_login') }}">
+                        <i class="fa fa-sign-in sr-icons"></i>
+                        Login
+                    </a>
+                </li>
+                <li class="lien">
+                    <a href="{{ path('app_register') }}">
+                        <i class="fa fa-user-plus sr-icons"></i>
+                        Register
+                    </a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>
