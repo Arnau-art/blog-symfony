@@ -58,4 +58,6 @@ when@test:
             check_path: app_login
         logout:
             path: app_logout
+        access_control:
+            - { path: ^/admin, roles: ROLE_ADMIN }
             
