@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+
+{% block categories %}
+<div id="categories">
+    <div class="container" style="margin-top: 80px;">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+            <h1>Categories</h1>
+            {{ form(form, {'attr': {'class': 'form-horizontal'}}) }}
+            <hr class="divider">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <th scope="row">{{ category.id }}</th>
+                        <td>{{ category.name }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

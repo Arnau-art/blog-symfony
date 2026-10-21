@@ -9,15 +9,20 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Contact;
 use App\Form\ContactFormType;
-
+use App\Entity\Category;
+use App\Form\CategoryFormType;
 
 final class PageController extends AbstractController
 {
-    #[Route('/', name: 'index')]
-    public function index(): Response
-    {
-        return $this->render('index.html.twig');
-    }
+   #[Route('/', name: 'index')]
+  public function index(ManagerRegistry $doctrine): Response
+  {
+      $categories = $doctrine->getRepository(Category::class)->findAll();
+      return $this->render('index.html.twig', array(
+          'categories' => $categories
+      ));
+  }
+
     #[Route('/about', name: 'about')]
     public function about(): Response
     {
@@ -57,6 +62,7 @@ final class PageController extends AbstractController
     {
         return $this->render('thankyou.html.twig');
     }
-    
+   
+
     
 }
