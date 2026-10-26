@@ -89,6 +89,7 @@ public function categories(ManagerRegistry $doctrine, Request $request): Respons
             'images' => $images
         ));
     }
+   
     
 
 

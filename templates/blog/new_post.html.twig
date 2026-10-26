@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}New Post{% endblock %}
+{% block body %}
+<!-- Principal Content Start -->
+<div id="new-post" style="padding-top: 80px; padding-bottom: 40px;">
+    <div class="container">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+            <h1>New Post</h1>
+            <hr class="divider">
+
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% endfor %}
+
+            {{ form_start(form, {'attr': {'class': 'form-horizontal', 'enctype': 'multipart/form-data'}}) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+
+            <hr class="divider">
+        </div>
+    </div>
+</div>
+<!-- Principal Content End -->
+{% endblock %}
