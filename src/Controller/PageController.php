@@ -11,6 +11,7 @@ use App\Entity\Contact;
 use App\Form\ContactFormType;
 use App\Entity\Category;
 use App\Form\CategoryFormType;
+use App\Repository\CategoryRepository;
 
 final class PageController extends AbstractController
 {
@@ -29,9 +30,11 @@ final class PageController extends AbstractController
         return $this->render('about.html.twig');
     }
     #[Route('/blog', name: 'blog')]
-    public function blog(): Response
+    public function blog(CategoryRepository $categoryRepository): Response
     {
-        return $this->render('blog.html.twig');
+        return $this->render('blog.html.twig', [
+            'categories' => $categoryRepository->findAllOrderedByName(),
+        ]);
     }
 
     #[Route('/single_post', name: 'single_post')]

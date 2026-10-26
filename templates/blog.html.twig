@@ -74,16 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <nav class="text-left">
-                    <ul class="pagination">
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#" aria-label="suivant">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a></li>
-                    </ul>
-                </nav>
+
             </div>
             <!-- End of Blog Post -->
 
@@ -103,11 +94,11 @@
                     </div>
                     <div class="panel-body">
                         <ul class="nav">
-                            <li><a href="#">Category I</a></li>
-                            <li><a href="#">Category II</a></li>
-                            <li><a href="#">Category III</a></li>
-                            <li><a href="#">Category IV</a></li>
-                            <li class="last"><a href="#">Category V</a></li>
+                            {% for category in categories %}
+                            <li><a href="{{ path('blog') }}">{{ category.name }}</a></li>
+                            {% else %}
+                            <li>No hi ha categories.</li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
