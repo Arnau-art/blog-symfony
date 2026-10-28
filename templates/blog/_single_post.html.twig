@@ -1,9 +1,20 @@
 {% if not post %}
 <h2>Post not found</h2>
 {% else %}
-{{post.title}}
-<img src="{{ asset('images/blog/' ~ post.image) }}" alt="{{ post.title }}">
-{{post.content}}
-{{post.postUser.name}}
-{{post.publishedAt | date('d') }} {{ post.publishedAt | date('F') }}
+<div class="post">
+    <div class="post-heading">
+        {% if post.publishedAt %}
+        <span>{{ post.publishedAt|date('j F')|upper }}</span>
+        {% endif %}
+        <img class="img-responsive" src="{{ asset('images/blog/' ~ post.image) }}" alt="{{ post.title }}">
+    </div>
+    <div class="post-body">
+        <h3><strong>{{ post.title }}</strong></h3>
+        <hr>
+        <p>{{ post.content }}</p>
+        <p><small>Per {{ post.postUser.name }}</small></p>
+    </div>
+</div>
+
+{{ include('partials/_post_comments.html.twig') }}
 {% endif %}
